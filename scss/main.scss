@@ -1,0 +1,170 @@
+@import "resets";
+@import "variables";
+
+@mixin flex-align($direction, $justify) {
+  display: flex;
+  justify-content: $justify;
+  align-items: center;
+  flex-direction: $direction;
+}
+
+@mixin mobile {
+  @media screen and (min-width: 375px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: 1440px) {
+    @content;
+  }
+}
+
+.container {
+  @include flex-align(column, center);
+
+  height: 100vh;
+  width: 100%;
+  position: relative;
+
+  background: url("../images/bg-stars.svg"),
+    linear-gradient($bg-primary, $bg-primary);
+  color: white;
+  overflow: hidden;
+
+  .title {
+    margin: 0 20px 50px;
+    letter-spacing: 5px;
+    text-align: center;
+  }
+
+  //COUNTER STYLES
+  .counter {
+    @include flex-align(row, space-around);
+    width: 100%;
+    padding: 0 5%;
+
+    .counter-number {
+      width: 80px;
+      height: 80px;
+      position: relative;
+      @include flex-align(row, center);
+      margin-bottom: 40vh;
+
+      &::after,
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 50%;
+      }
+
+      &::before {
+        border-radius: 5px 5px 0 0;
+        top: 0;
+        background: lighten($bg-primary, 7%);
+      }
+
+      &::after {
+        bottom: 0;
+        background: lighten($bg-primary, 10%);
+        border-radius: 0 0 5px 5px;
+        box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.4);
+      }
+
+      label {
+        position: absolute;
+        bottom: -25px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: $color-secondary;
+        font-size: 0.55rem;
+        letter-spacing: 4px;
+      }
+
+      .dot::before,
+      .dot::after {
+        content: "";
+        position: absolute;
+        width: 10px;
+        height: 7px;
+        background: $bg-primary;
+        z-index: 3;
+        top: calc(50% - 3.5px);
+        border-radius: 50%;
+      }
+
+      .dot::before {
+        left: -5px;
+      }
+
+      .dot::after {
+        right: -5px;
+      }
+
+      .value {
+        z-index: 4;
+        color: $color-primary;
+        font-size: 3.5rem;
+      }
+    }
+  }
+
+  .hill {
+    position: absolute;
+    bottom: 0;
+  }
+
+  .social-icons {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+
+    @include flex-align(row, space-between);
+    width: 25%;
+  }
+
+  @include mobile {
+    .counter {
+      width: 100%;
+
+      .counter-number {
+        width: 80px;
+        height: 80px;
+      }
+    }
+  }
+
+  @include desktop {
+    .counter {
+      width: 55%;
+      padding: 0 50px;
+
+      .counter-number{
+          width: 150px;
+          height: 150px;
+
+          .value{
+              font-size: 6rem;
+          }
+
+          .dot::after, .dot::before{
+              width: 15px;
+              height: 13px;
+              top: calc(50% - 6.5px);
+          }
+      }
+    }
+
+    .social-icons{
+        width: 12.5%;
+    }
+
+    .hill{
+        width: 100%;
+    }
+  }
+}

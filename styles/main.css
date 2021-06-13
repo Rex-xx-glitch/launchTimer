@@ -1,0 +1,145 @@
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@700&display=swap");
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Red Hat Text", sans-serif;
+  font-size: 14px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  background: url("../images/bg-stars.svg"), linear-gradient(#1e1f29, #1e1f29);
+  color: white;
+  overflow: hidden;
+}
+.container .title {
+  margin: 0 20px 50px;
+  letter-spacing: 5px;
+  text-align: center;
+}
+.container .counter {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  padding: 0 5%;
+}
+.container .counter .counter-number {
+  width: 80px;
+  height: 80px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin-bottom: 40vh;
+}
+.container .counter .counter-number::after, .container .counter .counter-number::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 50%;
+}
+.container .counter .counter-number::before {
+  border-radius: 5px 5px 0 0;
+  top: 0;
+  background: #2d2e3e;
+}
+.container .counter .counter-number::after {
+  bottom: 0;
+  background: #333547;
+  border-radius: 0 0 5px 5px;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.4);
+}
+.container .counter .counter-number label {
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #8486a9;
+  font-size: 0.55rem;
+  letter-spacing: 4px;
+}
+.container .counter .counter-number .dot::before,
+.container .counter .counter-number .dot::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 7px;
+  background: #1e1f29;
+  z-index: 3;
+  top: calc(50% - 3.5px);
+  border-radius: 50%;
+}
+.container .counter .counter-number .dot::before {
+  left: -5px;
+}
+.container .counter .counter-number .dot::after {
+  right: -5px;
+}
+.container .counter .counter-number .value {
+  z-index: 4;
+  color: #fb6087;
+  font-size: 3.5rem;
+}
+.container .hill {
+  position: absolute;
+  bottom: 0;
+}
+.container .social-icons {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  width: 25%;
+}
+@media screen and (min-width: 375px) {
+  .container .counter {
+    width: 100%;
+  }
+  .container .counter .counter-number {
+    width: 80px;
+    height: 80px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .container .counter {
+    width: 55%;
+    padding: 0 50px;
+  }
+  .container .counter .counter-number {
+    width: 150px;
+    height: 150px;
+  }
+  .container .counter .counter-number .value {
+    font-size: 6rem;
+  }
+  .container .counter .counter-number .dot::after, .container .counter .counter-number .dot::before {
+    width: 15px;
+    height: 13px;
+    top: calc(50% - 6.5px);
+  }
+  .container .social-icons {
+    width: 12.5%;
+  }
+  .container .hill {
+    width: 100%;
+  }
+}/*# sourceMappingURL=main.css.map */
