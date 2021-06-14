@@ -44,33 +44,99 @@
     width: 100%;
     padding: 0 5%;
 
+    .digit {
+      perspective: 1000px;
+    }
     .counter-number {
       width: 80px;
       height: 80px;
       position: relative;
-      @include flex-align(row, center);
       margin-bottom: 40vh;
+      font-size: 3.5rem;
+      color: $color-primary;
+
+      line-height: 1.42;
 
       &::after,
       &::before {
-        content: "";
         position: absolute;
-        left: 0;
+        z-index: 0;
+        display: flex;
+        justify-content: center;
+
         width: 100%;
         height: 50%;
+
+        overflow: hidden;
       }
 
       &::before {
-        border-radius: 5px 5px 0 0;
-        top: 0;
-        background: lighten($bg-primary, 7%);
+        content: attr(data-num-before);
+        align-items: flex-end;
+        bottom: 0;
       }
 
       &::after {
-        bottom: 0;
+        content: attr(data-num-after);
+        align-items: flex-start;
+        top: 0;
+      }
+
+      &::before,
+      &::after,
+      .card,
+      .card-face {
+        background: $bg-primary;
+      }
+
+      &::after,
+      .card-front {
+        background: lighten($bg-primary, 7%);
+        border-radius: 5px 5px 0 0;
+      }
+
+      &::before,
+      .card-back {
         background: lighten($bg-primary, 10%);
         border-radius: 0 0 5px 5px;
         box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.4);
+      }
+
+      .card {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        height: 50%;
+        transform-style: preserve-3d;
+        transform-origin: bottom;
+        transform: rotateX(0);
+
+        transition: transform 250ms ease-in-out;
+
+        .card-face {
+          position: absolute;
+          font-size: 3.5rem;
+
+          display: flex;
+          justify-content: center;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          backface-visibility: hidden;
+        }
+
+        .card-front {
+          align-items: flex-start;
+        }
+
+        .card-back {
+          align-items: flex-end;
+          transform: rotateX(-180deg);
+        }
+
+        &.flipped {
+          transform: rotateX(-180deg);
+        }
       }
 
       label {
@@ -101,12 +167,6 @@
 
       .dot::after {
         right: -5px;
-      }
-
-      .value {
-        z-index: 4;
-        color: $color-primary;
-        font-size: 3.5rem;
       }
     }
   }
@@ -143,28 +203,33 @@
       width: 55%;
       padding: 0 50px;
 
-      .counter-number{
-          width: 150px;
-          height: 150px;
+      .counter-number {
+        width: 150px;
+        height: 150px;
+        line-height: 1.6;
+        font-size: 6rem;
 
-          .value{
-              font-size: 6rem;
+        .card {
+          .card-face {
+            font-size: 6rem;
           }
+        }
 
-          .dot::after, .dot::before{
-              width: 15px;
-              height: 13px;
-              top: calc(50% - 6.5px);
-          }
+        .dot::after,
+        .dot::before {
+          width: 15px;
+          height: 13px;
+          top: calc(50% - 6.5px);
+        }
       }
     }
 
-    .social-icons{
-        width: 12.5%;
+    .social-icons {
+      width: 12.5%;
     }
 
-    .hill{
-        width: 100%;
+    .hill {
+      width: 100%;
     }
   }
 }
