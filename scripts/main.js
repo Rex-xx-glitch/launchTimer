@@ -14,25 +14,39 @@ function tick() {
   const minutes = getMinutes(launchTime);
   const seconds = getSeconds(launchTime);
 
-  if (DaysEl.innerHTML !== String(days)) {
-    DaysEl.innerHTML = days;
-    //animate(DaysEl);
+  if (DaysEl.cardFront.innerHTML !== String(days)) {
+    setData(DaysEl, days);
   }
 
-  if (HoursEl.innerHTML !== String(hours)) {
-    HoursEl.innerHTML = hours;
-    //animate(HoursEl);
+  if (HoursEl.cardFront.innerHTML !== String(hours)) {
+    setData(HoursEl, hours);
   }
 
-  if (MinutesEl.innerHTML !== String(minutes)) {
-    MinutesEl.innerHTML = minutes;
-    //animate(MinutesEl);
+  if (MinutesEl.cardFront.innerHTML !== String(minutes)) {
+    setData(MinutesEl, minutes);
   }
 
-  if (SecondsEl.innerHTML !== String(seconds)) {
-    SecondsEl.innerHTML = seconds;
-    //animate(SecondsEl);
+  if (SecondsEl.cardFront.innerHTML !== String(seconds)) {
+    setData(SecondsEl, seconds);
   }
 }
 
-//setInterval(tick, 1000);
+
+function setData(el, next){
+
+  
+  el.element.dataset.numAfter = el.element.dataset.numBefore;
+  el.element.dataset.numBefore = next;
+  el.cardFront.innerHTML = el.element.dataset.numBefore;
+  el.cardBack.innerHTML =  el.element.dataset.numAfter;
+  animate(el);
+}
+
+function animate(el){
+  el.card.classList.add("flipped");
+  setTimeout(()=> {
+    el.card.classList.remove("flipped");
+  }, 250);
+}
+
+setInterval(tick, 1000);
