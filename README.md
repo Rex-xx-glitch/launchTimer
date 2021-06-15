@@ -18,6 +18,9 @@ Users should be able to:
   - See a live countdown timer that ticks down every second (start the count at 14 days)
   - Bonus: When a number changes, make the card flip from the middle
 
+### Screenshot
+![Solution screenshot](https://github.com/Rex-xx-glitch/launchTimer/blob/main/solution.jpg?raw=true)
+
 ## My process
 ### Built with
   - HTML5 
