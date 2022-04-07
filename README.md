@@ -28,7 +28,7 @@ Users should be able to:
 
 ### Links
 - Solution URL: https://github.com/Rex-xx-glitch/launchTimer
-- Live Site URL: https://rex-xx-glitch.github.io/launchTimer
+- Live Site URL: https://rexer-glitch.github.io/launchTimer
 
 ## My process
 ### Built with
